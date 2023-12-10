@@ -1,10 +1,10 @@
 # Naveen Prabaharan
 # 12/10/23
 
-# This python script will organize the filesfrom the given folder into different subfolders for easier access to them later. 
+# This python script will organize the files from the given folder into different subfolders for easier access to them later. 
 
 import os
-
+import shutil
 # Image Extensions
 image_extensions = [".jpg", ".jpeg", ".jpe", ".jif", ".jfif", ".jfi", ".png", ".gif", ".webp", ".tiff", ".tif", ".psd", ".raw", ".arw", ".cr2", ".nrw",
                     ".k25", ".bmp", ".dib", ".heif", ".heic", ".ind", ".indd", ".indt", ".jp2", ".j2k", ".jpf", ".jpf", ".jpx", ".jpm", ".mj2", ".svg", ".svgz", ".ai", ".eps", ".ico"]
@@ -32,9 +32,9 @@ obj = os.scandir(path)
 print("Files and Directories in '% s':" % path)
 print("=======================================================")
 
-for entry in obj :
-    if entry.is_dir() or entry.is_file():
-        print(entry.name)
+for file in obj:
+    if file.is_dir():
+        shutil.move(file, "E:\Downloads")
 
 print("=======================================================")
  
