@@ -1,2 +1,2 @@
-# file-automation
-Simple Easy File Automation script in Python!
+# file-automated-organizer
+Simple Easy File Organization script in Python!
