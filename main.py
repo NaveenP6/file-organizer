@@ -6,7 +6,8 @@
 import os
 import sys
 import datetime
-from shutil import move
+import shutil
+from pathlib import Path
 
 # Image Extensions
 image_extensions = (".jpg", ".jpeg", ".jpe", ".jif", ".jfif", ".jfi", ".png", ".gif", ".webp", ".tiff", ".tif", ".psd", ".raw", ".arw", ".cr2", ".nrw",
@@ -27,42 +28,56 @@ executable_extensions = (".msi", ".bin", ".command", ".sh", ".bat", ".crx", ".ba
 archive_extensions = (".apk", ".ar", ".bz2", ".cab", ".cpio", ".deb", ".dmg", ".egg", ".gz", ".iso", ".jar", ".lha", ".mar", ".pea", ".rar", ".rpm", ".s7z",
                       ".shar", ".tar", ".tbz2", ".tgz", ".tlz", ".war", ".whl", ".xpi", ".zip", ".zipx", ".zst", ".xz", ".pak", ".7z")
 
-path = "C:\\Users\\nphn6\\Downloads"
+path = "C:\\Users\\nphn6\\Downloads" # This can be changed to the directory of your choice depending on where you store your files
 
+# moveFile function Sorts files in directory by file type, organizes the files in a different folders
+def moveFiles():
+    for files in os.listdir(path):
+        if files.endswith(image_extensions):
+            if os.path.exists(f"{path}\\Images") == True:
+                pass
+            else:
+                os.mkdir(f"{path}\\Images")
 
-for files in os.listdir(path):
-    if files.endswith(image_extensions):
-        print("image")  # printing file name of desired extension
-    elif files.endswith(video_extensions):
-        print("video")
-    elif files.endswith(audio_extensions):
-        print("audio")
-    elif files.endswith(document_extensions):
-        print("document")
-    elif files.endswith(executable_extensions):
-        print("executable")
-    elif files.endswith(archive_extensions):
-        print("archive")
-    else:
-        print("UNKOWN")
-        continue
+            shutil.move(f"{path}\\{files}", f"{path}\\Images")
+        elif files.endswith(video_extensions):
+            if os.path.exists(f"{path}\\Video") == True:
+                pass
+            else:
+                os.mkdir(f"{path}\\Video")
 
+            shutil.move(f"{path}\\{files}", f"{path}\\Video")
+        elif files.endswith(audio_extensions):
+            if os.path.exists(f"{path}\\Audio") == True:
+                pass
+            else:
+                os.mkdir(f"{path}\\Audio")
 
+            shutil.move(f"{path}\\{files}", f"{path}\\Audio")
+        elif files.endswith(document_extensions):
+            if os.path.exists(f"{path}\\Docs") == True:
+                pass
+            else:
+                os.mkdir(f"{path}\\Docs")
 
+            shutil.move(f"{path}\\{files}", f"{path}\\Docs")
+        elif files.endswith(executable_extensions):
+            if os.path.exists(f"{path}\\Programs") == True:
+                pass
+            else:
+                os.mkdir(f"{path}\\Programs")
 
+            shutil.move(f"{path}\\{files}", f"{path}\\Programs")
+        elif files.endswith(archive_extensions):
+            if os.path.exists(f"{path}\\Zipped") == True:
+                pass
+            else:
+                os.mkdir(f"{path}\\Zipped")
 
-# def moveFiles(path):
-#    for file in obj:
-#        if file.is_dir():
-#            shutil.move(file, "E:\Downloads\Folders")
-#        elif file.is_file():
-#            shutil.move(file, "E:\Downloads\Files")
- 
- 
-# entry.is_file() will check
-# if entry is a file or not and
-# entry.is_dir() method will
-# check if entry is a
-# directory or not. 
+            shutil.move(f"{path}\\{files}", f"{path}\\Zipped")
+        else:
+            print(f"UNKOWN: {files}")
+            continue
 
-
+    print("-----Organized Files-----")
+moveFiles()
