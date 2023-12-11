@@ -28,7 +28,7 @@ executable_extensions = (".msi", ".bin", ".command", ".sh", ".bat", ".crx", ".ba
 archive_extensions = (".apk", ".ar", ".bz2", ".cab", ".cpio", ".deb", ".dmg", ".egg", ".gz", ".iso", ".jar", ".lha", ".mar", ".pea", ".rar", ".rpm", ".s7z",
                       ".shar", ".tar", ".tbz2", ".tgz", ".tlz", ".war", ".whl", ".xpi", ".zip", ".zipx", ".zst", ".xz", ".pak", ".7z")
 
-path = "C:\\Users\\nphn6\\Downloads" # This can be changed to the directory of your choice depending on where you store your files
+path = "" # This can be changed to the directory of your choice depending on where you store your files
 
 # moveFile function Sorts files in directory by file type, organizes the files in a different folders
 def moveFiles():
