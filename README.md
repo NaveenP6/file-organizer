@@ -17,8 +17,9 @@ This Python script is designed to organize files within a specified folder into 
 
 ## Usage
 
-1. Modify the `path` variable at the end of the script to specify the directory containing your files.
-2. Execute the script to automatically organize the files into relevant subfolders.
+1. Clone or download the repository
+2. Modify the `path` variable at the end of the script to specify the directory containing your files.
+3. Execute the script to automatically organize the files into relevant subfolders.
 
 ## Important Note
 

@@ -4,7 +4,7 @@
 # This python script will organize the files from the given folder into different subfolders for easier access to them later. 
 
 import os
-import sys
+import time
 import datetime
 import shutil
 from pathlib import Path
@@ -28,56 +28,75 @@ executable_extensions = (".msi", ".bin", ".command", ".sh", ".bat", ".crx", ".ba
 archive_extensions = (".apk", ".ar", ".bz2", ".cab", ".cpio", ".deb", ".dmg", ".egg", ".gz", ".iso", ".jar", ".lha", ".mar", ".pea", ".rar", ".rpm", ".s7z",
                       ".shar", ".tar", ".tbz2", ".tgz", ".tlz", ".war", ".whl", ".xpi", ".zip", ".zipx", ".zst", ".xz", ".pak", ".7z")
 
-path = "" # This can be changed to the directory of your choice depending on where you store your files
+path = "C:\\Users\\nphn6\\Downloads" # This can be changed to the directory of your choice depending on where you store your files
 
-# moveFile function Sorts files in directory by file type, organizes the files in a different folders
-def moveFiles():
+# moveX functions Sorts files in directory by file type, organizes the files in a different folders
+def moveImages(path, files):
+    if not os.path.exists(f"{path}\\Images"):
+        os.mkdir(f"{path}\\Images")
+
+    shutil.move(f"{path}\\{files}", f"{path}\\Images")
+
+def moveVideos(path, files):
+    if not os.path.exists(f"{path}\\Video"):
+        os.mkdir(f"{path}\\Video")
+
+    shutil.move(f"{path}\\{files}", f"{path}\\Video")
+
+def moveAudio(path, files):
+    if not os.path.exists(f"{path}\\Audio"):
+        os.mkdir(f"{path}\\Audio")
+
+    shutil.move(f"{path}\\{files}", f"{path}\\Audio")
+
+def moveDocs(path, files):
+    if not os.path.exists(f"{path}\\Docs"):
+        os.mkdir(f"{path}\\Docs")
+
+    shutil.move(f"{path}\\{files}", f"{path}\\Docs")
+
+def moveExe(path, files):
+    if not os.path.exists(f"{path}\\Programs"):
+        os.mkdir(f"{path}\\Programs")
+
+    shutil.move(f"{path}\\{files}", f"{path}\\Programs")
+
+def moveArchive(path, files):
+    if not os.path.exists(f"{path}\\Zipped"):
+        os.mkdir(f"{path}\\Zipped")
+
+    shutil.move(f"{path}\\{files}", f"{path}\\Zipped")
+
+def main():
+
+    print("Starting...")
+    print(" ")
+
+    time.sleep(3)
+
     for files in os.listdir(path):
         if files.endswith(image_extensions):
-            if os.path.exists(f"{path}\\Images") == True:
-                pass
-            else:
-                os.mkdir(f"{path}\\Images")
+            moveImages(path, files)
 
-            shutil.move(f"{path}\\{files}", f"{path}\\Images")
         elif files.endswith(video_extensions):
-            if os.path.exists(f"{path}\\Video") == True:
-                pass
-            else:
-                os.mkdir(f"{path}\\Video")
+            moveVideos(path, files)
 
-            shutil.move(f"{path}\\{files}", f"{path}\\Video")
         elif files.endswith(audio_extensions):
-            if os.path.exists(f"{path}\\Audio") == True:
-                pass
-            else:
-                os.mkdir(f"{path}\\Audio")
+            moveAudio(path, files)
 
-            shutil.move(f"{path}\\{files}", f"{path}\\Audio")
         elif files.endswith(document_extensions):
-            if os.path.exists(f"{path}\\Docs") == True:
-                pass
-            else:
-                os.mkdir(f"{path}\\Docs")
+            moveDocs(path, files)
 
-            shutil.move(f"{path}\\{files}", f"{path}\\Docs")
         elif files.endswith(executable_extensions):
-            if os.path.exists(f"{path}\\Programs") == True:
-                pass
-            else:
-                os.mkdir(f"{path}\\Programs")
+            moveExe(path, files)
 
-            shutil.move(f"{path}\\{files}", f"{path}\\Programs")
         elif files.endswith(archive_extensions):
-            if os.path.exists(f"{path}\\Zipped") == True:
-                pass
-            else:
-                os.mkdir(f"{path}\\Zipped")
-
-            shutil.move(f"{path}\\{files}", f"{path}\\Zipped")
+            moveArchive(path, files)
+        
         else:
-            print(f"UNKOWN: {files}")
+            print(f"UNKOWN: {files}", datetime.datetime.now().strftime("%H:%M:%S"))
             continue
 
-    print("-----Organized Files-----")
-moveFiles()
+    print(" ")
+    print("-----Organized Files-----", datetime.datetime.now().strftime("%H:%M:%S"))
+main()
