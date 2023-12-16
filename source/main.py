@@ -30,42 +30,13 @@ archive_extensions = (".apk", ".ar", ".bz2", ".cab", ".cpio", ".deb", ".dmg", ".
 
 path = "C:\\Users\\nphn6\\Downloads" # This can be changed to the directory of your choice depending on where you store your files
 
-# moveX functions Sorts files in directory by file type, organizes the files in a different folders
-def moveImages(path, files):
-    if not os.path.exists(f"{path}\\Images"):
-        os.mkdir(f"{path}\\Images")
+# moveFiles function moves files into the correct directory
+def moveFiles(path, files, folder):
+    if not os.path.exists(f"{path}\\{folder}"):
+        os.mkdir(f"{path}\\{folder}")
 
-    shutil.move(f"{path}\\{files}", f"{path}\\Images")
+    shutil.move(f"{path}\\{files}", f"{path}\\{folder}")
 
-def moveVideos(path, files):
-    if not os.path.exists(f"{path}\\Video"):
-        os.mkdir(f"{path}\\Video")
-
-    shutil.move(f"{path}\\{files}", f"{path}\\Video")
-
-def moveAudio(path, files):
-    if not os.path.exists(f"{path}\\Audio"):
-        os.mkdir(f"{path}\\Audio")
-
-    shutil.move(f"{path}\\{files}", f"{path}\\Audio")
-
-def moveDocs(path, files):
-    if not os.path.exists(f"{path}\\Docs"):
-        os.mkdir(f"{path}\\Docs")
-
-    shutil.move(f"{path}\\{files}", f"{path}\\Docs")
-
-def moveExe(path, files):
-    if not os.path.exists(f"{path}\\Programs"):
-        os.mkdir(f"{path}\\Programs")
-
-    shutil.move(f"{path}\\{files}", f"{path}\\Programs")
-
-def moveArchive(path, files):
-    if not os.path.exists(f"{path}\\Zipped"):
-        os.mkdir(f"{path}\\Zipped")
-
-    shutil.move(f"{path}\\{files}", f"{path}\\Zipped")
 
 def main():
 
@@ -76,22 +47,22 @@ def main():
 
     for files in os.listdir(path):
         if files.endswith(image_extensions):
-            moveImages(path, files)
+            moveFiles(path, files, "Images")
 
         elif files.endswith(video_extensions):
-            moveVideos(path, files)
+            moveFiles(path, files, "Video")
 
         elif files.endswith(audio_extensions):
-            moveAudio(path, files)
+            moveFiles(path, files, "Audio")
 
         elif files.endswith(document_extensions):
-            moveDocs(path, files)
+            moveFiles(path, files, "Docs")
 
         elif files.endswith(executable_extensions):
-            moveExe(path, files)
+            moveFiles(path, files, "Programs")
 
         elif files.endswith(archive_extensions):
-            moveArchive(path, files)
+            moveFiles(path, files, "Zipped")
         
         else:
             print(f"UNKOWN: {files}", datetime.datetime.now().strftime("%H:%M:%S"))
