@@ -3,11 +3,12 @@
 
 # This python script will organize the files from the given folder into different subfolders for easier access to them later. 
 
+from sys import argv
+from pathlib import Path
+from time import sleep
 import os
-import time
 import datetime
 import shutil
-from pathlib import Path
 
 # Image Extensions
 image_extensions = (".jpg", ".jpeg", ".jpe", ".jif", ".jfif", ".jfi", ".png", ".gif", ".webp", ".tiff", ".tif", ".psd", ".raw", ".arw", ".cr2", ".nrw",
@@ -28,8 +29,6 @@ executable_extensions = (".msi", ".bin", ".command", ".sh", ".bat", ".crx", ".ba
 archive_extensions = (".apk", ".ar", ".bz2", ".cab", ".cpio", ".deb", ".dmg", ".egg", ".gz", ".iso", ".jar", ".lha", ".mar", ".pea", ".rar", ".rpm", ".s7z",
                       ".shar", ".tar", ".tbz2", ".tgz", ".tlz", ".war", ".whl", ".xpi", ".zip", ".zipx", ".zst", ".xz", ".pak", ".7z")
 
-path = "C:\\Users\\nphn6\\Downloads" # This can be changed to the directory of your choice depending on where you store your files
-
 # moveFiles function moves files into the correct directory
 def moveFiles(path, files, folder):
     if not os.path.exists(f"{path}\\{folder}"):
@@ -37,13 +36,11 @@ def moveFiles(path, files, folder):
 
     shutil.move(f"{path}\\{files}", f"{path}\\{folder}")
 
-
 def main():
-
+    path = argv[1]
     print("Starting...")
     print(" ")
-
-    time.sleep(3)
+    sleep(3)
 
     for files in os.listdir(path):
         if files.endswith(image_extensions):
