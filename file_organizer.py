@@ -1,8 +1,3 @@
-# Naveen Prabaharan
-# 12/10/23
-
-# This python script will organize the files from the given folder into different subfolders for easier access to them later. 
-
 from sys import argv
 from pathlib import Path
 from time import sleep
