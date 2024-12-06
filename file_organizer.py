@@ -1,4 +1,4 @@
-from sys import argv
+import sys
 from pathlib import Path
 from time import sleep
 import os
@@ -32,7 +32,7 @@ def moveFiles(path, files, folder):
     shutil.move(f"{path}\\{files}", f"{path}\\{folder}")
 
 def main():
-    path = argv[1]
+    path = sys.argv[1]
     print("Starting...")
     print(" ")
     sleep(3)
